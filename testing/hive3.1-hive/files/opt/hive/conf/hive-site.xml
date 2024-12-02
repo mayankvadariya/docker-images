@@ -60,22 +60,34 @@
 
     <property>
         <name>fs.s3.awsAccessKeyId</name>
-        <value>"Use AWS_ACCESS_KEY_ID environment variable to set this value"</value>
+        <value>accesskey</value>
     </property>
 
     <property>
         <name>fs.s3.awsSecretAccessKey</name>
-        <value>"Use AWS_SECRET_ACCESS_KEY environment variable to set this value"</value>
+        <value>secretkey</value>
     </property>
 
     <property>
         <name>fs.s3a.access.key</name>
-        <value>"Use AWS_ACCESS_KEY_ID environment variable to set this value"</value>
+        <value>accesskey</value>
     </property>
 
     <property>
         <name>fs.s3a.secret.key</name>
-        <value>"Use AWS_SECRET_ACCESS_KEY environment variable to set this value"</value>
+        <value>secretkey</value>
+    </property>
+    <property>
+        <name>fs.s3a.endpoint</name>
+        <value>http://minio:4566</value>
+    </property>
+    <property>
+        <name>fs.s3a.path.style.access</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>fs.s3.impl</name>
+        <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
     </property>
 
     <property>

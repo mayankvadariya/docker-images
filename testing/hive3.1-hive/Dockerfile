@@ -36,8 +36,8 @@ RUN yum install -y \
 # Override JAVA_HOME inherited from testing/almalinux9-oj17
 ENV JAVA_HOME=/usr/lib/jvm/zulu-8
 
-ARG HADOOP_VERSION=3.1.2
-ARG HIVE_VERSION=3.1.3
+ARG HADOOP_VERSION=3.3.6
+ARG HIVE_VERSION=4.0.0
 
 # TODO Apache Archive is rate limited -- these should probably go in S3
 ARG HADOOP_BINARY_PATH=https://archive.apache.org/dist/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
@@ -73,10 +73,24 @@ COPY ./files /
 # Run setup script
 RUN /root/setup.sh
 
-# HDFS port
-EXPOSE 9000 9870
+# HDFS ports
+EXPOSE 1004 1006 8020 9866 9867 9870 9864 50470
 
-# HIVE Metastore port
+# YARN ports
+EXPOSE 8030 8031 8032 8033 8040 8041 8042 8088 10020 19888
+
+# HIVE ports
 EXPOSE 9083 10000
+
+# SOCKS port
+EXPOSE 1180
+
+RUN mkdir -p /var/lib/hadoop-hdfs/cache/name/
+RUN ["chown", "-R", "root:root", "/var/lib/hadoop-hdfs/cache/name/"]
+RUN chmod -R 755 /var/lib/hadoop-hdfs/cache/name/
+#
+RUN mkdir -p /var/lib/hadoop-hdfs/cache/data/
+RUN ["chown", "-R", "root:root", "/var/lib/hadoop-hdfs/cache/data/"]
+RUN chmod -R 700 /var/lib/hadoop-hdfs/cache/data/
 
 CMD /root/entrypoint.sh
