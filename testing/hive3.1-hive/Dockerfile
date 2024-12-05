@@ -93,4 +93,6 @@ RUN mkdir -p /var/lib/hadoop-hdfs/cache/data/
 RUN ["chown", "-R", "root:root", "/var/lib/hadoop-hdfs/cache/data/"]
 RUN chmod -R 700 /var/lib/hadoop-hdfs/cache/data/
 
+RUN hdfs namenode -format
+
 CMD /root/entrypoint.sh
