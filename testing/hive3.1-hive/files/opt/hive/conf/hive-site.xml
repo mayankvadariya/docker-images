@@ -8,6 +8,11 @@
     </property>
 
     <property>
+        <name>hive.users.in.admin.role</name>
+        <value>hdfs,hive</value>
+    </property>
+
+    <property>
         <name>javax.jdo.option.ConnectionURL</name>
         <value>jdbc:mysql://localhost:3306/metastore?useSSL=false</value>
     </property>
